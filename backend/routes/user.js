@@ -1,7 +1,8 @@
 const express= require("express")
+const z=require("zod")
+const userrouter=express.Router()
+const usersignup=require("../controllers/usersignup")
 
-const userrouter=express.Router();
-userrouter.get('/',(req,res)=>{
-    res.send("hello world")
-})
+
+userrouter.post('/signup',usersignup)
 module.exports=userrouter
