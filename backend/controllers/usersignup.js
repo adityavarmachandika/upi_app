@@ -3,12 +3,12 @@ const argon2=require("argon2")
 const user=require("../models/loginschema")
 const z=require("zod")
 const asynchandler= require("express-async-handler")
-
+const jwt=require("jsonwebtoken")
 const userschema=z.object({
     firstname:z.string(),
     lastname:z.string(),
     email:z.string().email(),
-    password:z.string()
+    password:z.string() 
 })
 
 
@@ -42,7 +42,9 @@ const usersignup =asynchandler(
             password:hashedpass
         })
         const saveduser=await usertodb.save()
-        res.send(saveduser)  
+        
+        const jwt_token= jwt.sign({id:saveduser.id},process.env.JWT_SECRET,{expiresIn:'5d'})  
+        res.json({"jwt_token":jwt_token,"data":"user is created"} )  
     }
 )
 module.exports=usersignup
