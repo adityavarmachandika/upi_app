@@ -1,6 +1,6 @@
 
 const argon2=require("argon2")
-const user=require("../models/loginschema")
+const {user,account}=require("../models/schema")
 const z=require("zod")
 const asynchandler= require("express-async-handler")
 const jwt=require("jsonwebtoken")
@@ -42,7 +42,14 @@ const usersignup =asynchandler(
             password:hashedpass
         })
         const saveduser=await usertodb.save()
-        
+
+        const useraccount=new account({
+            userId:saveduser.id,
+            balance:1+Math.random()*100000
+        })
+        const savedaccount=await useraccount.save()
+        if(!savedaccount)
+            res.send("error in the account")
         const jwt_token= jwt.sign({id:saveduser.id},process.env.JWT_SECRET,{expiresIn:'5d'})  
         res.json({"jwt_token":jwt_token,"data":"user is created"} )  
     }

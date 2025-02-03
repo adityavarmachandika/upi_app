@@ -24,4 +24,17 @@ const userschema= mongoose.Schema({
     }
 })
 
-module.exports=mongoose.model("user",userschema)
+const accountSchema=mongoose.Schema({
+    userId:{
+        type:mongoose.Schema.Types.ObjectId,
+        required:[true]
+    },
+    balance:{
+        type:Number,
+        required:[true]
+    }
+})
+
+const user=mongoose.model("user", userschema)
+const account=mongoose.model("account",accountSchema)
+module.exports={user,account}

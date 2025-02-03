@@ -1,4 +1,4 @@
-const user=require("../models/loginschema")
+const {user}=require("../models/schema")
 const asynchandler=require("express-async-handler")
 const z=require("zod")
 
@@ -17,8 +17,10 @@ const editDetails=asynchandler(async (req,res)=>{
     const updateuser=await user.updateOne({
          _id:details.id
      },{$set:dataToEdit})
+     if(updateuser.matchedCount)
+        return res.json({error: "email all ready taken try another one"})
     res.send(updateuser)
-    
+
 })
 
 module.exports=editDetails

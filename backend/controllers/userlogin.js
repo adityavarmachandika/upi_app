@@ -2,7 +2,7 @@ const zod=require('zod')
 const jwt=require("jsonwebtoken")
 const asynchandler=require("express-async-handler")
 const argon2=require("argon2")
-const user=require("../models/loginschema")
+const {user}=require("../models/schema")
 const loginschema=zod.object({
     email:zod.string().email(),
     password:zod.string()
