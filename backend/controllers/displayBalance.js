@@ -1,7 +1,11 @@
-const user=require("../models/schema")
+const {account}=require("../models/schema")
 
 const displayBalance= async (req,res)=>{
-    res.send("hello")
+
+    const accountdetails=await account.findOne({userId:req.details.id})
+
+    return res.json({"balance":accountdetails.balance})
+
 }
 
 module.exports=displayBalance

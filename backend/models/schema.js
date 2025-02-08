@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-const dbconnect=require("../config/dbconnect")
+const {dbconnect}=require("../config/dbconnect")
 
 dbconnect()
 
