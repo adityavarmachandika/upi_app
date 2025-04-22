@@ -27,7 +27,8 @@ const userschema= mongoose.Schema({
 const accountSchema=mongoose.Schema({
     userId:{
         type:mongoose.Schema.Types.ObjectId,
-        required:[true]
+        required:[true],
+        ref:'user'
     },
     balance:{
         type:Number,
