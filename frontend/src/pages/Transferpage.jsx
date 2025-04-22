@@ -68,7 +68,7 @@ const Transferpage = () => {
 
   const handleTransfer = async (e) => {
     e.preventDefault();
-    if (!selectedUser || !transferAmount || isNaN(transferAmount) || parseFloat(transferAmount) <= 0) {
+    if (!selectedUser || !transferAmount || parseFloat(transferAmount) <= 0) {
       setTransferStatus({ success: false, message: "Please enter a valid amount and select a recipient" });
       return;
     }

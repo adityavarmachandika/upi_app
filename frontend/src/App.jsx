@@ -7,7 +7,6 @@ import Layout  from './mainLayout/Layout'
 import Homepage from './pages/Homepage'
 import Signup from './pages/Signup'
 import Loginpage from './pages/Loginpage'
-import Balancepage from './pages/Balancepage'
 import Transferpage from './pages/Transferpage'
 import EditProfile from './pages/EditProfile'
 
@@ -22,7 +21,6 @@ function App() {
           <Route path='home'  element={<Homepage/>}/>
           <Route path='signup'  element={<Signup/>}/>
           <Route path='login'  element={<Loginpage/>}/>
-          <Route path='balance'  element={<Balancepage/>}/>
           <Route path='transfer'  element={<Transferpage/>}/>
           <Route path='edit-profile'  element={<EditProfile/>}/>
         </Route>

@@ -32,7 +32,7 @@ const Signup = () => {
       
       if (data.jwt_token) {
         localStorage.setItem('token', data.jwt_token);
-        navigate('/balance');
+        navigate('/home');
       } else {
         setError(data.error || 'Registration failed');
       }

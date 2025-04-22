@@ -36,6 +36,26 @@ const accountSchema=mongoose.Schema({
     }
 })
 
+
+const transactionSchema= mongoose.Schema({
+    senderUserId: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: [true, "Sender user ID is required"],
+        ref: 'user'
+    },
+    receiverUserId: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: [true, "Receiver user ID is required"],
+        ref: 'user'
+    },
+    amount: {
+        type: Number,
+        required: [true, "Transaction amount is required"],
+        min: [1, "Transaction amount should be at least 1"]
+    }
+})
+
 const user=mongoose.model("user", userschema)
 const account=mongoose.model("account",accountSchema)
-module.exports={user,account}
+const transaction= mongoose.model("transaction", transactionSchema)
+module.exports={user,account,transaction}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import TransactionHistory from '../components/TransactionHistory';
 
 const Homepage = () => {
   const [userData, setUserData] = useState(null);
@@ -132,10 +133,7 @@ const Homepage = () => {
 
             <div className="px-6 py-6">
               <h3 className="text-lg font-medium text-gray-900 mb-4">Recent Transactions</h3>
-              
-              <div className="bg-gray-50 p-4 rounded-md text-center text-gray-500">
-                <p>Your recent transaction history will appear here.</p>
-              </div>
+              {userData && <TransactionHistory userId={userData._id} />}
             </div>
           </div>
         </div>
